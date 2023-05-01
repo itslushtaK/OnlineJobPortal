@@ -24,7 +24,7 @@ namespace OnlineJobPortal.User
             try
             {
                 con = new SqlConnection(str);
-                string query = @"Insert into Contact values(@Name ,Email ,SUbject,Message)";
+                string query = @"Insert into Contact values(@Name ,Email ,Subject,Message)";
                 cmd = new SqlCommand(query, con);
                 cmd.Parameters.AddWithValue("@Name", name.Value.Trim());
                 cmd.Parameters.AddWithValue("@Email", email.Value.Trim());
