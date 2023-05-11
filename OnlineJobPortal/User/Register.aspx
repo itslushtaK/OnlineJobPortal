@@ -86,7 +86,7 @@
                                            ForeColor="Red"  Display="Dynamic" SetFocusOnError="true" Font-Size="Small" InitialValue="0" ControlToValidate="ddlCountry"></asp:RequiredFieldValidator>
                                        <asp:SqlDataSource ID="SqlDataSource1" runat="server" 
                                            ConnectionString="<%$ ConnectionStrings:cs %>" 
-                                           SelectCommand="SELECT [CountryName] FROM [Country]"></asp:SqlDataSource>
+                                           SelectCommand="SELECT [CountryName] FROM [Country]" OnSelecting="SqlDataSource1_Selecting"></asp:SqlDataSource>
                                    </div>
                                 </div>
                             </div>
