@@ -48,7 +48,6 @@ namespace OnlineJobPortal.User
                 Response.Redirect("Login.aspx");
             }
         }
-
     }
 
     internal class lbRegisterOrProfile

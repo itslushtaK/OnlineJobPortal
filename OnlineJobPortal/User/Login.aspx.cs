@@ -20,15 +20,15 @@ namespace OnlineJobPortal.User
         {
 
         }
-        protected void btnLogin_Click(object sender ,EventArgs e)
+        protected void btnLogin_Click(object sender, EventArgs e)
         {
             try
             {
-                if(ddlLoginType.SelectedValue == "Admin")
+                if (ddlLoginType.SelectedValue != null && ddlLoginType.SelectedValue == "Admin")
                 {
                     username = ConfigurationManager.AppSettings["username"];
                     password = ConfigurationManager.AppSettings["password"];
-                    if(username == txtUserName.Text.Trim() && password == txtPassword.Text.Trim()) 
+                    if(username == txtUsername.Text.Trim() && password == txtPassword.Text.Trim()) 
                     {
                         Session["admin"] = username;
                         Response.Redirect("../Admin/Dashboard.aspx", false);
@@ -42,9 +42,9 @@ namespace OnlineJobPortal.User
                 else
                 {
                     con = new SqlConnection(str);
-                    string query = @"Select from [User] where Username = @Username and Password = @Password";
+                    string query = @"SELECT * FROM [User] WHERE Username = @Username AND Password = @Password";
                     cmd = new SqlCommand(query, con);
-                    cmd.Parameters.AddWithValue("@Username", txtUserName.Text.Trim());
+                    cmd.Parameters.AddWithValue("@Username", txtUsername.Text.Trim());
                     cmd.Parameters.AddWithValue("@Password", txtPassword.Text.Trim());
                   
 

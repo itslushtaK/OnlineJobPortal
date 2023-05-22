@@ -30,13 +30,17 @@
                                    <div class="form-group">
                                     <label>Password</label>
                                     <asp:TextBox ID="txtPassword" runat="server" CssClass="form-control" placeholder="Enter Password" 
-                                       TextMode="Password" required></asp:TextBox>
+                                       TextMode="Password" ></asp:TextBox>
+                                        <asp:RegularExpressionValidator ID="regexValidator" runat="server" ControlToValidate="txtPassword" 
+                                        ErrorMessage="Password must contain at least one uppercase letter, one number, and one special character."
+                                        ValidationExpression="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^\da-zA-Z]).{8,}$">
+                                        </asp:RegularExpressionValidator>
                                     </div>
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                          <label>Confirm Password</label>
-                                           <asp:TextBox ID="txtConfirmPassword" runat="server" CssClass="form-control" TextMode="Password" placeholder="Confirm Password" required></asp:TextBox>
+                                           <asp:TextBox ID="txtConfirmPassword" runat="server" CssClass="form-control" TextMode="Password" placeholder="Confirm Password" ></asp:TextBox>
                                            <asp:CompareValidator ID="compareValidatori" runat="server" ErrorMessage="Password & Confirm Password should be same!"
                                                ControlToCompare="txtPassword" ControlToValidate="txtConfirmPassword" ForeColor="Red" Display="Dynamic" SetFocusOnError="true"
                                                Font-Size="Small"></asp:CompareValidator>
@@ -48,23 +52,22 @@
                                 <div class="col-12">
                                     <div class="form-group">
                                     <label>Full Name</label>
-                                    <asp:TextBox ID="txtFullName" runat="server" CssClass="form-control" placeholder="Enter Full Name" required></asp:TextBox>
-                                       <%-- <asp:RegularExpressionValidator runat="server" ErrorMessage="Name must be in characters" ForeColor="Red" 
-                                            Display="Dynamic" SetFocusOnError="true" Font-Size="Small" ValidationException="^[a-zA-Z\s]+$" ControlToValidate="txtFullName"></asp:RegularExpressionValidator>--%>
-                                   </div>
+                                    <asp:TextBox ID="txtFullName" runat="server" CssClass="form-control" placeholder="Enter Full Name" ></asp:TextBox>    
                                 </div>
                                 <div class="col-12">
                                     <div class="form-group">
                                     <label>Adress</label>
-                                    <asp:TextBox ID="txtAddress" runat="server" CssClass="form-control" placeholder="Enter Adress" TextMode="MultiLine" required></asp:TextBox>
+                                    <asp:TextBox ID="txtAddress" runat="server" CssClass="form-control" placeholder="Enter Adress" TextMode="MultiLine" ></asp:TextBox>
                                     </div>
                                 </div>
-                                <div class="col-12">
+                                    <div class="col-12">
                                     <div class="form-group">
-                                    <label>Mobile Number</label>
-                                    <asp:TextBox ID="txtMobile" runat="server" CssClass="form-control" placeholder="Enter Mobile Number" required></asp:TextBox>
-                                         <%-- <asp:RegularExpressionValidator runat="server" ErrorMessage="Mobile No. must have 10 digits" ForeColor="Red" 
-                                            Display="Dynamic" SetFocusOnError="true" Font-Size="Small" ValidationException="^[0-9]{10}+$" ControlToValidate="txtMobile"></asp:RegularExpressionValidator>--%>
+                                        <label>Mobile Number</label>
+                                        <asp:TextBox ID="txtMobile" runat="server" CssClass="form-control" placeholder="Enter Mobile Number"></asp:TextBox>
+                                        <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ControlToValidate="txtMobile"
+                                            ErrorMessage="Mobile number must have the prefix +383 and exactly 8 digits."
+                                            ValidationExpression="^(\+383)?\d{8}$">
+                                        </asp:RegularExpressionValidator>
                                     </div>
                                 </div>
                                 <div class="col-12">
@@ -94,7 +97,7 @@
                                 <asp:Button ID="btnRegister" runat="server" Text="Register" CssClass="button button-contactForm boxed-btn mr-4"
                                     OnClick="btnRegister_Click1"
                                     />
-                                <span class="clickLink"><a href="../Users/Login.aspx">Already Register? Click Here</a></span>
+                                <span class="clickLink"><a href="../User/Login.aspx">Already Register? Click Here</a></span>
                             </div>
                         </div>
                     </div>

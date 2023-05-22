@@ -18,10 +18,10 @@
                                 <div class="col-12">
                                 <div class="form-group">
                                     <label>Username</label>
-                                    <asp:TextBox ID="txtUserName" runat="server" CssClass="form-control" placeholder="Enter Username" required></asp:TextBox>
+                                    <asp:TextBox ID="txtUsername" runat="server" CssClass="form-control" placeholder="Enter Username" required></asp:TextBox>
                                 </div>
                                 </div>
-                                <div class="col-sm-6">
+                                <div class="col-12">
                                    <div class="form-group">
                                     <label>Password</label>
                                     <asp:TextBox ID="txtPassword" runat="server" CssClass="form-control" placeholder="Enter Password" 
@@ -33,7 +33,7 @@
                                 <div class="form-group">
                                     <label>Login Type</label>
                                     <asp:DropDownList ID="ddlLoginType" runat="server" CssClass="form-control w-100">
-                                    <asp:ListItem>Select Login Type</asp:ListItem>
+                                    <asp:ListItem Value="0">Select Login Type</asp:ListItem>
                                     <asp:ListItem>Admin</asp:ListItem>
                                     <asp:ListItem>User</asp:ListItem>
                                     </asp:DropDownList>
@@ -43,14 +43,13 @@
                                     </asp:RequiredFieldValidator>
                                 </div>
                                 </div>
-                                
                             </div>
 
                             <div class="form-group mt-3">
                                 <asp:Button ID="btnLogin" runat="server" Text="Login" CssClass="button button-contactForm boxed-btn mr-4"
                                     OnClick="btnLogin_Click"
                                     />
-                                <span class="clickLink"><a href="../Users/Register.aspx">New User? Click Here</a></span>
+                                <span class="clickLink"><a href="../User/Register.aspx">New User? Click Here</a></span>
                             </div>
                         </div>
                     </div>

@@ -17,8 +17,6 @@ namespace OnlineJobPortal.User
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            // Register the Vue.js script when the page loads
-            ScriptManager.RegisterStartupScript(this, GetType(), "VueRegisterScript", "Vue.registerScript();", true);
         }
 
         protected void btnRegister_Click1(object sender, EventArgs e)
