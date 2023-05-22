@@ -9,6 +9,7 @@ namespace OnlineJobPortal.User
 {
     public partial class UserMaster : System.Web.UI.MasterPage
     {
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if(Session["user"] != null)
@@ -25,7 +26,7 @@ namespace OnlineJobPortal.User
 
         protected void lbRegisterOrProfile_Click(object sender, EventArgs e)
         {
-            if(lbRegisterOrProfile.Text == "Profile")
+            if (lbRegisterOrProfile.Text == "Profile")
             {
                 Response.Redirect("Profile.aspx");
             }
@@ -49,5 +50,9 @@ namespace OnlineJobPortal.User
         }
 
     }
+
+    internal class lbRegisterOrProfile
+    {
+        public static string Text { get; internal set; }
     }
 }

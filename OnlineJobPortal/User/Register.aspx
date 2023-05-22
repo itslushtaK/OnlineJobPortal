@@ -1,10 +1,12 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/User/UserMaster.Master" AutoEventWireup="true" CodeBehind="Register.aspx.cs" Inherits="OnlineJobPortal.User.Register" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-
+        <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+   
     <section>
-        <div class="container pr-50 pb-40">
+        <div class="container pt-50 pb-40">
                 <div class="row">
                     <div class="col-12 pb-20">
                     <asp:Label ID="lblMsg" runat="server" Visible="false"></asp:Label>
@@ -29,7 +31,6 @@
                                     <label>Password</label>
                                     <asp:TextBox ID="txtPassword" runat="server" CssClass="form-control" placeholder="Enter Password" 
                                        TextMode="Password" required></asp:TextBox>
-<%--                                        <input class="form-control valid" name="name" id="name" runat="server" type="text" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter your name'" placeholder="Enter your name" required>--%>
                                     </div>
                                 </div>
                                 <div class="col-sm-6">
@@ -39,7 +40,6 @@
                                            <asp:CompareValidator ID="compareValidatori" runat="server" ErrorMessage="Password & Confirm Password should be same!"
                                                ControlToCompare="txtPassword" ControlToValidate="txtConfirmPassword" ForeColor="Red" Display="Dynamic" SetFocusOnError="true"
                                                Font-Size="Small"></asp:CompareValidator>
-<%--                                        <input class="form-control valid" name="email" id="email" runat="server" type="email" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter email address'" placeholder="Email" required>--%>
                                     </div>
                                 </div>
                                 <div class="col-12">
@@ -49,22 +49,22 @@
                                     <div class="form-group">
                                     <label>Full Name</label>
                                     <asp:TextBox ID="txtFullName" runat="server" CssClass="form-control" placeholder="Enter Full Name" required></asp:TextBox>
-                                        <asp:RequiredFieldValidator runat="server" ErrorMessage="Name must be in characters" ForeColor="Red" 
-                                            Display="Dynamic" SetFocusOnError="true" Font-Size="Small" ValidationException="^[a-zA-Z\s]+$" ControlToValidate="txtFullName"></asp:RequiredFieldValidator>
+                                       <%-- <asp:RegularExpressionValidator runat="server" ErrorMessage="Name must be in characters" ForeColor="Red" 
+                                            Display="Dynamic" SetFocusOnError="true" Font-Size="Small" ValidationException="^[a-zA-Z\s]+$" ControlToValidate="txtFullName"></asp:RegularExpressionValidator>--%>
                                    </div>
                                 </div>
                                 <div class="col-12">
                                     <div class="form-group">
                                     <label>Adress</label>
-                                    <asp:TextBox ID="txtAdress" runat="server" CssClass="form-control" placeholder="Enter Adress" TextMode="MultiLine" required></asp:TextBox>
+                                    <asp:TextBox ID="txtAddress" runat="server" CssClass="form-control" placeholder="Enter Adress" TextMode="MultiLine" required></asp:TextBox>
                                     </div>
                                 </div>
                                 <div class="col-12">
                                     <div class="form-group">
                                     <label>Mobile Number</label>
                                     <asp:TextBox ID="txtMobile" runat="server" CssClass="form-control" placeholder="Enter Mobile Number" required></asp:TextBox>
-                                          <asp:RequiredFieldValidator runat="server" ErrorMessage="Mobile No. must have 10 digits" ForeColor="Red" 
-                                            Display="Dynamic" SetFocusOnError="true" Font-Size="Small" ValidationException="^[0-9]{10}+$" ControlToValidate="txtMobile"></asp:RequiredFieldValidator>
+                                         <%-- <asp:RegularExpressionValidator runat="server" ErrorMessage="Mobile No. must have 10 digits" ForeColor="Red" 
+                                            Display="Dynamic" SetFocusOnError="true" Font-Size="Small" ValidationException="^[0-9]{10}+$" ControlToValidate="txtMobile"></asp:RegularExpressionValidator>--%>
                                     </div>
                                 </div>
                                 <div class="col-12">
@@ -78,22 +78,21 @@
                                 <div class="col-12">
                                    <div class="form-group">
                                     <label>Country</label>
-                                    <asp:DropDownList ID="ddlCountry" runat="server" DataSourceID="SqlDataSource1" CssClass="form-control w-100"
-                                        AppendDataBoundItems="true" DataTextField="CountryName" DataValueField="CountryName">
-                                        <asp:ListItem Value="0">Select Country</asp:ListItem>
+                                       <asp:DropDownList ID="ddlCountry" runat="server" DataSourceID="SqlDataSource1" CssClass="form-contact w-100"
+                                           AppendDataBoundItems="true" DataTextField="CountryName" DataValueField="CountryName">
+                                           <asp:ListItem Value="0">Select Country</asp:ListItem>
                                        </asp:DropDownList>
-                                       <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="Country is required"
-                                           ForeColor="Red"  Display="Dynamic" SetFocusOnError="true" Font-Size="Small" InitialValue="0" ControlToValidate="ddlCountry"></asp:RequiredFieldValidator>
-                                       <asp:SqlDataSource ID="SqlDataSource1" runat="server" 
-                                           ConnectionString="<%$ ConnectionStrings:cs %>" 
-                                           SelectCommand="SELECT [CountryName] FROM [Country]" OnSelecting="SqlDataSource1_Selecting"></asp:SqlDataSource>
+                                       <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="Country Is Required!"
+                                           ForeColor="Red" 
+                                            Display="Dynamic" SetFocusOnError="true" Font-Size="Small" InitialValue="0" ControlToValidate="ddlCountry"></asp:RequiredFieldValidator>
+                                       <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:cs %>" SelectCommand="SELECT [CountryName] FROM [Country]"></asp:SqlDataSource>
                                    </div>
                                 </div>
                             </div>
 
                             <div class="form-group mt-3">
                                 <asp:Button ID="btnRegister" runat="server" Text="Register" CssClass="button button-contactForm boxed-btn mr-4"
-                                    OnClick="btnRegister_Click"
+                                    OnClick="btnRegister_Click1"
                                     />
                                 <span class="clickLink"><a href="../Users/Login.aspx">Already Register? Click Here</a></span>
                             </div>
@@ -102,5 +101,6 @@
         </div>
        </div>
     </section>
+   
 
 </asp:Content>

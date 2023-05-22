@@ -24,7 +24,7 @@ namespace OnlineJobPortal.User
             try
             {
                 con = new SqlConnection(str);
-                string query = @"Insert into Contact values(@Name ,Email ,Subject,Message)";
+                string query = @"Insert into Contact values(@Name , @Email , @Subject , @Message)";
                 cmd = new SqlCommand(query, con);
                 cmd.Parameters.AddWithValue("@Name", name.Value.Trim());
                 cmd.Parameters.AddWithValue("@Email", email.Value.Trim());
@@ -35,9 +35,10 @@ namespace OnlineJobPortal.User
                 if (r > 0)
                 {
                     lblMsg.Visible = true;
-                    lblMsg.Text = "Thanks for reaching out will look intro your query!";
+                    lblMsg.Text = "Thanks for Contacting US";
                     lblMsg.CssClass = "alert alert-success";
                     clear();
+
                 }
                 else
                 {
@@ -45,11 +46,13 @@ namespace OnlineJobPortal.User
                     lblMsg.Visible = true;
                     lblMsg.Text = "Cannot save record right now, please try after sometime...";
                     lblMsg.CssClass = "alert alert-danger";
+
                 }
             }
             catch (Exception ex)
             {
-                Response.Write("<script>alert('"+ ex.Message +"');</script>");
+                Response.Write("<script>alert('" + ex.Message + "');</script>");
+                //lblMsg.Text = ("ex.Message" + "error"+ex.Message);
             }
             finally
             {
@@ -65,5 +68,7 @@ namespace OnlineJobPortal.User
             message.Value = string.Empty;
 
         }
+
+        
     }
 }
