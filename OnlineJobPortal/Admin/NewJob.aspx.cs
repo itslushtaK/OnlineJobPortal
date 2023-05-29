@@ -48,13 +48,14 @@ namespace OnlineJobPortal.Admin
                 //{
 
                 //}
-                query = @"Insert into Jobs values(@Title, @NoOfPost, @Description, @Experience, @Specialization, @LastDateToApply,
+                query = @"Insert into Jobs values(@Title, @NoOfPost, @Description, @Qualification, @Experience, @Specialization, @LastDateToApply,
                          @Salary, @JobType, @CompanyName, @CompanyImage, @Website, @Email, @Address, @Country, @State, @CreateDate)";
 
                 DateTime time = DateTime.Now;
                 cmd = new SqlCommand(query, con);
                 cmd.Parameters.AddWithValue("@Title", txtJobTitle.Text.Trim());
                 cmd.Parameters.AddWithValue("@NoOfPost", txtNoOfPost.Text.Trim());
+                cmd.Parameters.AddWithValue("@Qualification", txtQualification.Text.Trim());
                 cmd.Parameters.AddWithValue("@Description", txtDescription.Text.Trim());
                 cmd.Parameters.AddWithValue("@Experience", txtExperience.Text.Trim());
                 cmd.Parameters.AddWithValue("@Specialization", txtSpecialization.Text.Trim());
@@ -64,7 +65,7 @@ namespace OnlineJobPortal.Admin
                 cmd.Parameters.AddWithValue("@CompanyName", txtCompany.Text.Trim());
                 cmd.Parameters.AddWithValue("@Website", txtWebsite.Text.Trim());
                 cmd.Parameters.AddWithValue("@Email", txtEmail.Text.Trim());
-                cmd.Parameters.AddWithValue("@Address", txtAdress.Text.Trim());
+                cmd.Parameters.AddWithValue("@Address", txtAddress.Text.Trim());
                 cmd.Parameters.AddWithValue("@Country", txtCompany.Text.Trim());
                 cmd.Parameters.AddWithValue("@State", txtState.Text.Trim());
                 cmd.Parameters.AddWithValue("@CreateDate", time.ToString("yyyy-MM-dd HH:mm:ss"));
@@ -91,7 +92,7 @@ namespace OnlineJobPortal.Admin
                     cmd.Parameters.AddWithValue("@CompanyImage", imagePath);
                     isValidToExecute = true;
                 }
-                if(isValidToExecute)
+                if (isValidToExecute)
                 {
                     con.Open();
                     int res = cmd.ExecuteNonQuery();
@@ -131,7 +132,7 @@ namespace OnlineJobPortal.Admin
             txtState.Text = string.Empty;
             txtWebsite.Text = string.Empty;
             txtLastDate.Text = string.Empty;
-            txtAdress.Text = string.Empty;
+            txtAddress.Text = string.Empty;
             txtSalary.Text = string.Empty;
             txtSpecialization.Text = string.Empty;
             txtExperience.Text = string.Empty;
@@ -148,7 +149,7 @@ namespace OnlineJobPortal.Admin
             {
                 ".jpg", ".png", ".jpeg"
             };
-            for(int i = 0;i<=fileExtension.Length - 1; i++)
+            for (int i = 0; i <= fileExtension.Length - 1; i++)
             {
                 if (fileName.Contains(fileExtension[i]))
                 {

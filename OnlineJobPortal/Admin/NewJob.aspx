@@ -84,7 +84,7 @@
                     </asp:TextBox>
                 </div>
                 <div class="col-md-6 pt-3">
-                    <label for="ddlJobType" style="font-weight: 600">Company/Orgnaization Logo</label>
+                    <label for="fuCompanyLogo" style="font-weight: 600">Company/Orgnaization Logo</label>
                     <asp:FileUpload ID="fuCompanyLogo" runat="server" ToolTip=".jpg, .jpeg, .png extension only" />
                 </div>
             </div>
@@ -104,8 +104,8 @@
             </div>
             <div class="row mr-lg-5 ml-lg-5 mb-3">
                 <div class="col-md-6 pt-3">
-                    <label for="txtAdress" style="font-weight: 600">Address</label>
-                    <asp:TextBox ID="txtAdress" runat="server" CssClass="form-control"
+                    <label for="txtAddress" style="font-weight: 600">Address</label>
+                    <asp:TextBox ID="txtAddress" runat="server" CssClass="form-control"
                         placeholder="Enter Job Adress"
                         TextMode="MultiLine" required></asp:TextBox>
                 </div>
