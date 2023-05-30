@@ -10,6 +10,7 @@ using System.Web.UI.WebControls;
 
 namespace OnlineJobPortal.Admin
 {
+
     public partial class JobList : System.Web.UI.Page
     {
 
@@ -76,7 +77,7 @@ namespace OnlineJobPortal.Admin
                 }
                 else
                 {
-                    lblMsg.Text = "Cannot delte this record!";
+                    lblMsg.Text = "Cannot delete this record!";
                     lblMsg.CssClass = "alert alert-danger";
                 }
                 con.Close();

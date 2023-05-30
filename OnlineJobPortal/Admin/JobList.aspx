@@ -69,7 +69,7 @@
                             </asp:TemplateField>
 
                             <asp:CommandField CausesValidation="false" HeaderText="Delete" ShowDeleteButton ="true" 
-                                DeleteImageUrl ="../assets/img/icon.trashIcon.png" ButtonType="Image">
+                                DeleteImageUrl ="../assets/img/Delete.png" ButtonType="Image">
                                 <ControlStyle Height="25px" Width="25px" />
                                 <ItemStyle HorizontalAlign="Center" />
                                   </asp:CommandField>                      
