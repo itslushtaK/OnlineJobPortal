@@ -60,9 +60,8 @@
                             <asp:TemplateField HeaderText="Edit">
                                 <ItemTemplate>
                                     <asp:LinkButton ID="btnEditJob" runat="server" CommandName="EditJob" CommandArgument='<%# Eval("JobId") %>'>
-                                    <asp:Image ID="Img" runat="server" ImageUrl="../assets/img/icon.editPencil.png" Height="25px" />
-                                       </asp:LinkButton>
-
+                                    <asp:Image ID="Img" runat="server" ImageUrl="../assets/img/edit.png" Height="25px" />
+                                    </asp:LinkButton>
                                 </ItemTemplate>
                                 <ItemStyle HorizontalAlign="Center" Width="50px"/>
 

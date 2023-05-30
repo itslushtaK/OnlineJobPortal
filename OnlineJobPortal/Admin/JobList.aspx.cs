@@ -97,7 +97,7 @@ namespace OnlineJobPortal.Admin
         {
             if (e.CommandName == "EditJob")
             {
-                Response.Redirect("NewJob.aspx?id= + e.CommandArgument.ToString()");
+                Response.Redirect("NewJob.aspx?id=" + e.CommandArgument.ToString() );
             }
 
         }
