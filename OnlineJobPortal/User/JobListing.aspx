@@ -457,7 +457,7 @@
 
                                                     <a href="JobDetails.aspx?id=<%# Eval("JobId") %>">
 
-                                                        <img width="80" src="<%# GetImageUrl( Eval("CompanyImage")) %>" alt="">
+                                                        <img width="80" src="<%# ( Eval("CompanyImage")) %>" alt="">
 
                                                     </a>
 
