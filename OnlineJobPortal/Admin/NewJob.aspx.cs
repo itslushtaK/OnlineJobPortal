@@ -82,7 +82,7 @@ namespace OnlineJobPortal.Admin
                 {
                     if (fuCompanyLogo.HasFile)
                     {
-                        if (IsValidExtension(fuCompanyLogo.FileName))
+                        if (Utils. IsValidExtension(fuCompanyLogo.FileName))
                         {
                             concatQuery = "CompanyImage = @CompanyImage";
                         }
@@ -121,7 +121,7 @@ namespace OnlineJobPortal.Admin
 
                     if (fuCompanyLogo.HasFile)
                     {
-                        if (IsValidExtension(fuCompanyLogo.FileName))
+                        if (Utils.IsValidExtension(fuCompanyLogo.FileName))
                         {
                             Guid obj = Guid.NewGuid();
                             imagePath = "Images/" + obj.ToString() + fuCompanyLogo.FileName;
@@ -166,7 +166,7 @@ namespace OnlineJobPortal.Admin
 
                     if (fuCompanyLogo.HasFile)
                     {
-                        if (IsValidExtension(fuCompanyLogo.FileName))
+                        if (Utils.IsValidExtension (fuCompanyLogo.FileName))
                         {
                             Guid obj = Guid.NewGuid();
                             imagePath = "Images/" + obj.ToString() + fuCompanyLogo.FileName;
@@ -233,10 +233,10 @@ namespace OnlineJobPortal.Admin
             ddlJobType.ClearSelection();
         }
 
-        private bool IsValidExtension(string fileName)
-        {
-            string[] fileExtension = { ".jpg", ".jpeg", ".png" };
-            return fileExtension.Any(ext => fileName.EndsWith(ext, StringComparison.OrdinalIgnoreCase));
-        }
+        //private bool IsValidExtension(string fileName)
+        //{
+        //    string[] fileExtension = { ".jpg", ".jpeg", ".png" };
+        //    return fileExtension.Any(ext => fileName.EndsWith(ext, StringComparison.OrdinalIgnoreCase));
+        //}
     }
 }

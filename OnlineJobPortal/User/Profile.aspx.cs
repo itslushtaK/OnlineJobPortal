@@ -39,8 +39,15 @@ namespace OnlineJobPortal.User
             sda = new SqlDataAdapter(cmd);
             dt = new DataTable();
             sda.Fill(dt);
-            dlProfile.DataSource = dt;
-            dlProfile.DataBind();
+            if(dt.Rows.Count > 0)
+            {
+                dlProfile.DataSource = dt;
+                dlProfile.DataBind();
+            }
+            else
+            {
+                Response.Write("<script>alert(' Please do login again with your latest username');</script>");
+            }
         }
 
         protected void dlProfile_ItemCommand(object source, DataListCommandEventArgs e)
