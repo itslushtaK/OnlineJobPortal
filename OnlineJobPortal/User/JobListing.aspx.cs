@@ -23,7 +23,7 @@ namespace OnlineJobPortal.User
             if (!IsPostBack)
             {
                 showJobList();
-                RBSelectedColorChange();
+                //RBSelectedColorChange();
             }
         }
 
@@ -31,18 +31,20 @@ namespace OnlineJobPortal.User
 
         private void showJobList()
         {
-            con = new SqlConnection(str);
-            string query = @"Select JobId, Title, Salary, JobType, CompanyName, State, CreateDate from Jobs";
-            cmd = new SqlCommand(query, con);
-            sda = new SqlDataAdapter(cmd);
-            dt = new DataTable();
-            sda.Fill(dt);
-
-            DataList1.DataSource = dt.DefaultView; // Use DefaultView to bind DataRowView objects
-            DataList1.DataBind();
-            lbljobCount.Text = JobCount(dt.Rows.Count);
-
-        }
+            if (dt == null)
+            {
+                con = new SqlConnection(str);
+                string query = @"Select JobId, Title, Salary, JobType, CompanyName, CompanyImage, Country, CreateDate from Jobs";
+                cmd = new SqlCommand(query, con);
+                sda = new SqlDataAdapter(cmd);
+                dt = new DataTable();
+                sda.Fill(dt);
+            }
+                DataList1.DataSource = dt.DefaultView; // Use DefaultView to bind DataRowView objects
+                DataList1.DataBind();
+                lbljobCount.Text = JobCount(dt.Rows.Count);
+            }
+        
 
         string JobCount(int count)
         {
@@ -63,13 +65,30 @@ namespace OnlineJobPortal.User
 
         protected void ddlCountry_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            if (ddlCountry.SelectedValue != "0")
+            {
+                con = new SqlConnection(str);
+                string query = @"Select JobId,Title,Salary,JobType,CompanyName,CompanyImage,Country,State,CreateDate from Jobs 
+                                where Country ='" + ddlCountry.SelectedValue + "' ";
+                cmd = new SqlCommand(query, con);
+                sda = new SqlDataAdapter(cmd);
+                dt = new DataTable();
+                sda.Fill(dt);
+                showJobList();
+                //RBSelectedColorChange();
+            }
+            else
+            {
+                showJobList();
+                //RBSelectedColorChange();
+            }
         }
+
 
         protected string GetImageUrl(Object url)
         {
             string url1 = "";
-            if(string.IsNullOrEmpty(url.ToString()) || url == DBNull.Value)
+            if (string.IsNullOrEmpty(url.ToString()) || url == DBNull.Value)
             {
                 url1 = "~/Images/No_image.png";
             }
@@ -135,7 +154,36 @@ namespace OnlineJobPortal.User
 
         protected void CheckBoxList1_SelectedIndexChanged(object sender, EventArgs e)
         {
+            string jobType = string.Empty;
+            jobType = SelectedCheckBox();
+            if(jobType != "")
+            {
+                con = new SqlConnection(str);
+                string query = @"Select JobId,Title,JobType,Salary,CompanyName,CompanyImage,Country,State,CreateDate from Jobs 
+                                where JobType IN (" + jobType +")";
+                cmd = new SqlCommand(query, con);
+                sda = new SqlDataAdapter(cmd);
+                dt = new DataTable();
+                sda.Fill(dt);
+                showJobList();
+            }
+            else
+            {
+                showJobList();
+            }
+        }
 
+        private string SelectedCheckBox()
+        {
+            string jobType = string.Empty;
+            for(int i =0;i <CheckBoxList1.Items.Count; i++)
+            {
+                if (CheckBoxList1.Items[i].Selected)
+                {
+                    jobType += "'" + CheckBoxList1.Items[i].Text + "',";
+                }
+            }
+            return jobType = jobType.TrimEnd(',');
         }
 
         protected void RadioButtonList1_SelectedIndexChanged(object sender, EventArgs e)
@@ -152,9 +200,8 @@ namespace OnlineJobPortal.User
         {
 
         }
-         void RBSelectedColorChange()
-        {
-            throw new NotImplementedException();
-        }
+        //void RBSelectedColorChange()
+        //{
+        //}
     }
 }
