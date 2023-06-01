@@ -14,8 +14,6 @@
             padding-left: 20px;
 
         }
-
-
             .checkbox label {
 
                 display: inline-block;
@@ -289,24 +287,16 @@
                                 <!-- Select job items start -->
 
                                 <div class="select-job-items2">
+                                <asp:DropDownList ID="ddlCountry" runat="server" name="select" CssClass="form-control w-100"
+                                    DataSourceID="SqlDataSource1" AppendDataBoundItems="True" DataTextField="CountryName"
+                                    DataValueField="CountryName" OnSelectedIndexChanged="ddlCountry_SelectedIndexChanged"
+                                    AutoPostBack="true">
+                                    <asp:ListItem Value="0">Country</asp:ListItem>
+                                </asp:DropDownList>
+                                <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:cs %>"
+                                    SelectCommand="SELECT [CountryName] FROM [Country]"></asp:SqlDataSource>
+                            </div>
 
-                                    <asp:DropDownList ID="ddlCountry" runat="server" name="select" CssClass="form-control w-100"
-
-                                        DataSourceID="SqlDataSource1" AppendDataBoundItems="True" DataTextField="CountryName"
-
-                                        DataValueField="CountryName" OnSelectedIndexChanged="ddlCountry_SelectedIndexChanged"
-
-                                        AutoPostBack="true">
-
-                                        <asp:ListItem Value="0">Country</asp:ListItem>
-
-                                    </asp:DropDownList>
-
-                                    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:cs %>"
-
-                                        SelectCommand="SELECT [CountryName] FROM [Country]"></asp:SqlDataSource>
-
-                                </div>
 
                                 <!--  Select job items End-->
 
@@ -357,7 +347,7 @@
 
                                 <div class="select-Categories pb-50">
 
-                                    <div class="small-section-tittle2">
+                                  <div class="small-section-tittle2">
 
                                         <h4>Posted Within</h4>
 
@@ -389,7 +379,7 @@
 
                                 <!-- select-Categories End -->
 
-                                <div class="mb-1">
+                              <div class="mb-1">
 
                                     <asp:LinkButton ID="lbFilter" runat="server" CssClass="btn btn-sm" Width="100%"
 
@@ -403,7 +393,7 @@
 
                                         OnClick="lbReset_Click">Reset</asp:LinkButton>
 
-                                </div>
+                                </div>--%>
 
 
                             </div>
@@ -464,23 +454,21 @@
                                                 </div>
 
                                                 <div class="job-tittle job-tittle2">
-
                                                     <a href="JobDetails.aspx?id=<%# Eval("JobId") %>">
 
                                                         <h5><%# Eval("Title") %></h5>
-
                                                     </a>
 
                                                     <ul>
-
                                                         <li><%# Eval("CompanyName") %></li>
-
-                                                        <li><i class="fas fa-map-marker-alt"></i><%# Eval("State") %>, <%# Eval("Country") %></li>
-
+<%--                                                        <li><i class="fas fa-map-marker-alt"></i><%# Eval("State") %>, <%# Eval("Country") %></li>--%>
+                                                        
+                                                        <li><%# Eval("Country") %></li>
                                                         <li><%# Eval("Salary") %></li>
+                                                        
+
 
                                                     </ul>
-
                                                 </div>
 
                                             </div>
