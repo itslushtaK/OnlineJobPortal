@@ -1,69 +1,68 @@
 ﻿using System;
 using System.Configuration;
-using System.Data;
-using System.Data.SqlClient;
 using System.Web.UI.WebControls;
+using MongoDB.Bson;
+using MongoDB.Driver;
 
 namespace OnlineJobPortal.Admin
 {
     public partial class ContactList : System.Web.UI.Page
     {
-        SqlConnection con;
-        SqlCommand cmd;
-        DataTable dt;
-        string str = ConfigurationManager.ConnectionStrings["cs"].ConnectionString;
+        private string connectionString = ConfigurationManager.ConnectionStrings["MongoDBConnection"].ConnectionString;
+        private string databaseName = "Contact";
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["admin"] == null)
-            {
-                Response.Redirect("../User/Login.aspx");
-            }
-
             if (!IsPostBack)
             {
-                ShowContact();
+                BindContactData();
             }
-        }
-
-        private void ShowContact()
-        {
-            string query = @"Select Row_Number() over(Order by (Select 1)) as [Sr.No], ContactId, Name, Email, Subject, Message from Contact";
-            con = new SqlConnection(str);
-            cmd = new SqlCommand(query, con);
-            SqlDataAdapter sda = new SqlDataAdapter(cmd);
-            dt = new DataTable();
-            sda.Fill(dt);
-            GridView1.DataSource = dt;
-            GridView1.DataBind();
         }
 
         protected void GridView1_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
             GridView1.PageIndex = e.NewPageIndex;
-            ShowContact();
+            BindContactData();
         }
 
         protected void GridView1_RowDeleting(object sender, GridViewDeleteEventArgs e)
         {
-            int contactId = Convert.ToInt32(GridView1.DataKeys[e.RowIndex].Value);
-            con = new SqlConnection(str);
-            cmd = new SqlCommand("DELETE FROM Contact WHERE ContactId = @id", con);
-            cmd.Parameters.AddWithValue("@id", contactId);
-            con.Open();
-            int rowsAffected = cmd.ExecuteNonQuery();
-            con.Close();
-            if (rowsAffected > 0)
-            {
-                lblMsg.Text = "Contact deleted successfully!";
-                lblMsg.CssClass = "alert alert-success";
-            }
-            else
-            {
-                lblMsg.Text = "Cannot delete this record!";
-                lblMsg.CssClass = "alert alert-danger";
-            }
-            ShowContact();
+            GridViewRow row = GridView1.Rows[e.RowIndex];
+            string contactId = row.Cells[0].Text; // Assuming the ContactId is in the first column
+
+            DeleteContact(contactId);
+            BindContactData();
+        }
+
+        public class FormData
+        {
+            public ObjectId Id { get; set; } // MongoDB ObjectId field
+            public string ContactId { get; set; } // Add this property
+            public string Message { get; set; }
+            public string Name { get; set; }
+            public string Email { get; set; }
+            public string Subject { get; set; }
+        }
+
+        private void BindContactData()
+        {
+            var client = new MongoClient(connectionString);
+            var database = client.GetDatabase(databaseName);
+            var collection = database.GetCollection<FormData>("formdata");
+
+            var documents = collection.Find(FilterDefinition<FormData>.Empty).ToList();
+
+            GridView1.DataSource = documents;
+            GridView1.DataBind();
+        }
+
+        private void DeleteContact(string contactId)
+        {
+            var client = new MongoClient(connectionString);
+            var database = client.GetDatabase(databaseName);
+            var collection = database.GetCollection<FormData>("formdata");
+
+            collection.DeleteOne(f => f.ContactId == contactId);
         }
     }
 }

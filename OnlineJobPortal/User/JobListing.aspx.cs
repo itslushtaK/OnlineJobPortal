@@ -84,7 +84,7 @@ namespace OnlineJobPortal.User
             }
         }
 
-
+        //Setting default image if their is no image for any job.
         protected string GetImageUrl(Object url)
         {
             string url1 = "";
@@ -203,5 +203,9 @@ namespace OnlineJobPortal.User
         //void RBSelectedColorChange()
         //{
         //}
+
+
+
+        
     }
 }

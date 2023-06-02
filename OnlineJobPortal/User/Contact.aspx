@@ -109,22 +109,7 @@
                             <!-- Vue.js CDN -->
                             <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 
-                            <!-- Vue.js app initialization -->
-                            <script>
-                                new Vue({
-                                    el: '#app',
-                                    data: {
-                                        likes: 0
-                                    },
-                                    methods: {
-                                        increaseLikes() {
-                                            this.likes++;
-                                        }
-                                    }
-                                });
-                            </script>
-
-
+                            
                     </div>
                       
 <%--                        </form>--%>
