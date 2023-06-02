@@ -9,6 +9,7 @@
             color: white;
         }
     </style>
+
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -42,13 +43,8 @@
                                 <asp:BoundField DataField="Message" HeaderText="Message">
                                     <ItemStyle HorizontalAlign="Center" />
                                 </asp:BoundField>
-                                <asp:TemplateField HeaderText="Toggle">
-                                    <ItemTemplate>
-                                        <div id="app">
-                                            <button @click="toggleButton" :class="{ 'active': isToggled }">Toggle</button>
-                                        </div>
-                                    </ItemTemplate>
-                                </asp:TemplateField>
+                                
+
                             </Columns>
                             <HeaderStyle BackColor="#7200cf" ForeColor="white" />
                             <RowStyle CssClass="grid-row" />
@@ -59,4 +55,6 @@
             </div>
         </div>
     </div>
+    
+
 </asp:Content>
