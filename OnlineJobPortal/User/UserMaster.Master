@@ -80,7 +80,7 @@
                                     <asp:LinkButton ID="lbRegisterOrProfile" runat="server" CssClass="btn head-btn1" 
                                         OnCLick="lbRegisterOrProfile_Click" CausesValidation="false"
                                       ></asp:LinkButton>
-                                    <asp:LinkButton ID="lbLoginOrLogout" runat="server" CssClass="button button-contactForm boxed-btn"
+                                    <asp:LinkButton ID="lbLoginOrLogout" runat="server" CssClass="btn head-btn2"
                                         OnClick="lbLoginOrLogout_Click" CausesValidation="false"
                                        ></asp:LinkButton>
 

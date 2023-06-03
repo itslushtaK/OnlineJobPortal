@@ -20,17 +20,15 @@
         </div>
         </div>
         <!-- Hero Area End -->
-        <div>
-            <asp:Label ID="lblMsg" runat="server" Visible="false"></asp:Label>
-        </div>
+                        <div>
+                            <asp:Label ID="lblMsg" runat="server" Visible="false"></asp:Label>
+                        </div>
         <!-- job post company Start -->
         <div class="job-post-company pt-120 pb-120">
             <div class="container">
                 <asp:DataList ID="DataList1" runat="server" OnItemCommand="DataList1_ItemCommand" OnItemDataBound="DataList1_ItemDataBound">
 
                     <ItemTemplate>
-
-
                         <div class="row justify-content-between">
                     <!-- Left Content -->
                     <div class="col-xl-7 col-lg-8">
@@ -70,11 +68,7 @@
                                 </div>
                                <ul>
                                    <li><%# Eval("Specialization") %></li>
-                                   <%--<li>Mobile Applicationin iOS/Android/Tizen or other platform</li>
-                                   <li>Research and code , libraries, APIs and frameworks</li>
-                                   <li>Strong knowledge on software development life cycle</li>
-                                   <li>Strong problem solving and debugging skills</li>--%>
-                               </ul>
+                                   
                             </div>
                             <div class="post-details2  mb-50">
                                  <!-- Small Section Tittle -->
@@ -120,7 +114,7 @@
                               <span><%# Eval("CompanyName") %></span>
                               <p><b>Address:</b><%# Eval("Address") %></p>
                             <ul>
-                                <li>Name: <span> <%# Eval("Company") %> </span></li>
+                                <li>Name: <span> <%# Eval("CompanyName") %> </span></li>
                                 <li>Web : <span> <%# Eval("Website") %></span></li>
                                 <li>Email: <span> <%# Eval("Email") %></span></li>
                             </ul>

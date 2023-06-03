@@ -32,16 +32,16 @@ namespace OnlineJobPortal.User
             {
                 Response.Redirect("JobListing.aspx");
             }
-           
+
         }
 
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            
+
         }
 
-        
+
 
 
         private void showJobDetails()
@@ -57,7 +57,7 @@ namespace OnlineJobPortal.User
             DataList1.DataBind();
             jobTitle = dt.Rows[0]["Title"].ToString();
 
-            
+
         }
 
 
@@ -65,9 +65,9 @@ namespace OnlineJobPortal.User
 
         protected void DataList1_ItemCommand(object source, DataListCommandEventArgs e)
         {
-            if(e.CommandName == "ApplyJob")
+            if (e.CommandName == "ApplyJob")
             {
-                if(Session["user"] != null)
+                if (Session["user"] != null)
                 {
                     try
                     {
@@ -78,7 +78,7 @@ namespace OnlineJobPortal.User
                         cmd.Parameters.AddWithValue("@UserId", Session["userId"]);
                         con.Open();
                         int r = cmd.ExecuteNonQuery();
-                        if(r > 0)
+                        if (r > 0)
                         {
                             lblMsg.Visible = true;
                             lblMsg.Text = "Job applied succesfull!";
@@ -92,7 +92,7 @@ namespace OnlineJobPortal.User
                             lblMsg.CssClass = "alert alert-danger";
                         }
                     }
-                    catch(Exception ex)
+                    catch (Exception ex)
                     {
                         Response.Write("<scipt>alert('" + ex.Message + "');</scipt>");
                     }
@@ -129,13 +129,13 @@ namespace OnlineJobPortal.User
         bool isApplied()
         {
             con = new SqlConnection(str);
-            string query = @"Select * from AppliedJobs where UserId= @UserId and JobId = @JobId";
+            string query = @"SELECT * FROM AppliedJobs WHERE UserId = @UserId AND JobId = @JobId";
             cmd = new SqlCommand(query, con);
-            cmd.Parameters.AddWithValue("@i=UserId", Session["userId"]);
+            cmd.Parameters.AddWithValue("@UserId", Session["userId"]);
             cmd.Parameters.AddWithValue("@JobId", Request.QueryString["id"]);
             sda = new SqlDataAdapter(cmd);
             dt1 = new DataTable();
-            sda.Fill(dt);
+            sda.Fill(dt1);
             if (dt1.Rows.Count == 1)
             {
                 return true;
@@ -145,6 +145,7 @@ namespace OnlineJobPortal.User
                 return false;
             }
         }
+
 
 
         //Setting default image if their is no image for any job.

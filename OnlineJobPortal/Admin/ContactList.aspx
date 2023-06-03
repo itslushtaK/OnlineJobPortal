@@ -1,7 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Admin/AdminMaster.Master" AutoEventWireup="true" CodeBehind="ContactList.aspx.cs" Inherits="OnlineJobPortal.Admin.ContactList" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
-    <script src="ContactList.js"></script>
 
     <style>
         .active {
@@ -42,13 +41,6 @@
                                 <asp:BoundField DataField="Message" HeaderText="Message">
                                     <ItemStyle HorizontalAlign="Center" />
                                 </asp:BoundField>
-                                <asp:TemplateField HeaderText="Toggle">
-                                    <ItemTemplate>
-                                        <div id="app">
-                                            <button @click="toggleButton" :class="{ 'active': isToggled }">Toggle</button>
-                                        </div>
-                                    </ItemTemplate>
-                                </asp:TemplateField>
                             </Columns>
                             <HeaderStyle BackColor="#7200cf" ForeColor="white" />
                             <RowStyle CssClass="grid-row" />
