@@ -22,7 +22,7 @@
             <div class="row mb-3 pt-sm-3">
                 <div class="col-md-12">
                     <div style="overflow-x: auto;">
-                        <asp:GridView ID="GridView1" runat="server" OnRowDeleting="GridView1_RowDeleting"
+                        <asp:GridView ID="GridView1" runat="server" CssClass="table table-hover table-bordered" OnRowDeleting="GridView1_RowDeleting"
                             EmptyDataText="No record to display..!" AutoGenerateColumns="False" AllowPaging="True" PageSize="5"
                             OnPageIndexChanging="GridView1_PageIndexChanging" DataKeyNames="ContactId">
 
