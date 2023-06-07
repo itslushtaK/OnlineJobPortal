@@ -22,14 +22,16 @@
             <div class="row mb-3 pt-sm-3">
                 <div class="col-md-12">
                     <div style="overflow-x: auto;">
-                        <asp:GridView ID="GridView1" runat="server" OnRowDeleting="GridView1_RowDeleting"
+                        <asp:GridView ID="GridView1" runat="server" CssClass="table table-hover table-bordered" 
+                            OnRowDeleting="GridView1_RowDeleting"
                             EmptyDataText="No record to display..!" AutoGenerateColumns="False" AllowPaging="True" PageSize="5"
                             OnPageIndexChanging="GridView1_PageIndexChanging" DataKeyNames="ContactId">
 
                             <Columns>
-                                <asp:BoundField DataField="ContactId" HeaderText="ContactId">
+                                <asp:BoundField DataField="Id" HeaderText="ContactId">
                                     <ItemStyle HorizontalAlign="Center" />
                                 </asp:BoundField>
+                                
                                 <asp:BoundField DataField="Name" HeaderText="Name">
                                     <ItemStyle HorizontalAlign="Center" />
                                 </asp:BoundField>
@@ -42,13 +44,8 @@
                                 <asp:BoundField DataField="Message" HeaderText="Message">
                                     <ItemStyle HorizontalAlign="Center" />
                                 </asp:BoundField>
-                                <asp:TemplateField HeaderText="Toggle">
-                                    <ItemTemplate>
-                                        <div id="app">
-                                            <button @click="toggleButton" :class="{ 'active': isToggled }">Toggle</button>
-                                        </div>
-                                    </ItemTemplate>
-                                </asp:TemplateField>
+                               
+                              
                             </Columns>
                             <HeaderStyle BackColor="#7200cf" ForeColor="white" />
                             <RowStyle CssClass="grid-row" />
