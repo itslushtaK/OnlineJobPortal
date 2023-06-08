@@ -1,12 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-<<<<<<< HEAD
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
-=======
->>>>>>> 12cae699593f3142d8f343ac21088c3600f01aae
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -16,7 +13,6 @@ namespace OnlineJobPortal.Admin
 {
     public partial class ViewResume : System.Web.UI.Page
     {
-<<<<<<< HEAD
         SqlConnection con;
         SqlCommand cmd;
         DataTable dt;
@@ -113,13 +109,9 @@ namespace OnlineJobPortal.Admin
                 }
             }
         }
-=======
-        protected void Page_Load(object sender, EventArgs e)
-        {
 
-        }
+       
 
       
->>>>>>> 12cae699593f3142d8f343ac21088c3600f01aae
     }
 }
