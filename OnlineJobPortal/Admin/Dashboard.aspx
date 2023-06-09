@@ -177,12 +177,12 @@
                                  <i class="fas fade fa-check-square pr-2"></i>
                              </div>
                              <div class="mb-4">
-                                 <h5 class="card-title mb-0">Total Users</h5>
+                                 <h5 class="card-title mb-0"> Applied Jobs</h5>
                              </div>
                              <div class="row-align-items-center mb-2 d-flex">
                                  <div class="col-8">
                                      <h2 class="d-flex align-items-center mb-0">
-                                         <% Response.Write(Session["Users"]); %>
+                                         <% Response.Write(Session["AppliedJobs"]); %>
                                      </h2>
                                  </div>
                              </div>
@@ -196,12 +196,12 @@
                                  <i class="fas fade fa-comments pr-2"></i>
                              </div>
                              <div class="mb-4">
-                                 <h5 class="card-title mb-0">Total Jobs</h5>
+                                 <h5 class="card-title mb-0">Contacted User</h5>
                              </div>
                              <div class="row-align-items-center mb-2 d-flex">
                                  <div class="col-8">
                                      <h2 class="d-flex align-items-center mb-0">
-                                         <% Response.Write(Session["Jobs"]); %>
+                                         <% Response.Write(Session["Contact"]); %>
                                      </h2>
                                  </div>
                              </div>
