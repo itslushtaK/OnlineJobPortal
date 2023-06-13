@@ -35,35 +35,19 @@ namespace OnlineJobPortal.Admin
 
         }
 
-        private void ContactedCound()
+        private void ContactedCount()
         {
             con = new SqlConnection(str);
-            sda = new SqlDataAdapter("Select Count(*) from [User]", con);
+            sda = new SqlDataAdapter("Select Count(*) from Contact", con);
             dt = new DataTable();
             sda.Fill(dt);
             if(dt.Rows.Count > 0)
             {
-                Session["Users"] = dt.Rows[0][0];
+                Session["Contact"] = dt.Rows[0][0];
             }
             else
             {
-                Session["Users"] = 0;
-            }
-        }
-
-        private void Jobs()
-        {
-            con = new SqlConnection(str);
-            sda = new SqlDataAdapter("Select Count(*) from Jobs", con);
-            dt = new DataTable();
-            sda.Fill(dt);
-            if (dt.Rows.Count > 0)
-            {
-                Session["Jobs"] = dt.Rows[0][0];
-            }
-            else
-            {
-                Session["Jobs"] = 0;
+                Session["Contact"] = 0;
             }
         }
 
@@ -80,6 +64,22 @@ namespace OnlineJobPortal.Admin
             else
             {
                 Session["AppliedJobs"] = 0;
+            }
+        }
+
+        private void Jobs()
+        {
+            con = new SqlConnection(str);
+            sda = new SqlDataAdapter("Select Count(*) from Jobs", con);
+            dt = new DataTable();
+            sda.Fill(dt);
+            if (dt.Rows.Count > 0)
+            {
+                Session["Jobs"] = dt.Rows[0][0];
+            }
+            else
+            {
+                Session["Jobs"] = 0;
             }
         }
 
