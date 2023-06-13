@@ -177,7 +177,11 @@
                                  <i class="fas fade fa-check-square pr-2"></i>
                              </div>
                              <div class="mb-4">
+<<<<<<< HEAD
                                  <h5 class="card-title mb-0">Applied Jobs</h5>
+=======
+                                 <h5 class="card-title mb-0"> Applied Jobs</h5>
+>>>>>>> 6eacc46fd0769166b8b58f4ac94f7ee3e1becb44
                              </div>
                              <div class="row-align-items-center mb-2 d-flex">
                                  <div class="col-8">
@@ -196,7 +200,11 @@
                                  <i class="fas fade fa-comments pr-2"></i>
                              </div>
                              <div class="mb-4">
+<<<<<<< HEAD
                                  <h5 class="card-title mb-0">Conctated Users </h5>
+=======
+                                 <h5 class="card-title mb-0">Contacted User</h5>
+>>>>>>> 6eacc46fd0769166b8b58f4ac94f7ee3e1becb44
                              </div>
                              <div class="row-align-items-center mb-2 d-flex">
                                  <div class="col-8">
